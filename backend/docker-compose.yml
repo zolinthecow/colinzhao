@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  server:
+    command: [ 'pnpm', 'dev' ]
+    build:
+      context: './server/'
+      dockerfile: Dockerfile
+      args:
+        ENV: development
+    expose:
+      - 4000
+    ports:
+      - 4000:4000
+    volumes:
+      - ./server/:/app
+    environment:
+      - OPENAI_KEY=$OPENAI_KEY
+    

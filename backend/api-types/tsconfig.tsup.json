@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Export API types",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "baseUrl": "../server/src",
+    "paths": {
+      ".": ["."]
+    },
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "module": "ES2022",
+    "target": "ES2022",
+    "moduleDetection": "force"
+  },
+  "exclude": ["./node_modules"]
+}
