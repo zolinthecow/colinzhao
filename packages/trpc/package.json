@@ -1,0 +1,18 @@
+{
+  "name": "@codechat/trpc",
+  "main": "index.ts",
+  "types": "index.ts",
+  "dependencies": {
+    "@tanstack/react-query": "4",
+    "@trpc/client": "^10.45.0",
+    "@trpc/react-query": "^10.45.0",
+    "@trpc/server": "^10.45.0",
+    "react": "^18",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "typescript": "^5"
+  }
+}

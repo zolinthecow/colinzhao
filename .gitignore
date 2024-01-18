@@ -1,0 +1,8 @@
+.turbo
+dist/**
+.next/**
+
+**/node_modules
+
+.postgres-files/**/*
+!.postgres-files/.gitkeep
