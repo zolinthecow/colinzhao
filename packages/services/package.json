@@ -1,20 +1,25 @@
 {
-  "name": "@codechat/services",
+  "name": "@colinzhao/services",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@colinzhao/eslint-config": "workspace:*",
+    "@colinzhao/tsconfig": "workspace:*",
     "inversify": "^6.0.2",
-    "openai": "^4.24.7"
+    "openai": "^4.24.7",
+    "reflect-metadata": "^0.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "eslint": "^8",
     "typescript": "^5"
   }
 }

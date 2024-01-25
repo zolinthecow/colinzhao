@@ -1,7 +1,6 @@
-import { router } from "./trpc";
+import { router } from './trpc';
 
-import bruh
- from "./procedures/bruh";
+import bruh from './procedures/bruh';
 export const appRouter = router({
   bruh,
 });

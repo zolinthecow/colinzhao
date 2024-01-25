@@ -7,7 +7,7 @@ export default class AIService implements IAIService {
   constructor() {
     this._openAIClient = new OpenAI({
       apiKey: process.env['OPENAI_KEY'],
-    })
+    });
   }
 
   getOpenAIClient(): OpenAI {

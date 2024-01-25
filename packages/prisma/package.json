@@ -1,9 +1,10 @@
 {
-  "name": "@codechat/prisma",
+  "name": "@colinzhao/prisma",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
+    "db:generate": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { publicProcedure } from "../trpc";
+import { z } from 'zod';
+import { publicProcedure } from '../trpc';
 
 const zInput = z.object({
   text: z.string(),

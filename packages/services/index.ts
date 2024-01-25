@@ -1,8 +1,8 @@
-import { container } from "./inversify.config";
-import { TYPES } from "./serviceTypes";
+import { container } from './inversify.config';
+import { TYPES } from './serviceTypes';
 
 // interfaces
-import IAIService from "./aiService/AIService.interface";
+import IAIService from './aiService/AIService.interface';
 
 const aiService = container.get<IAIService>(TYPES.AIService);
 
