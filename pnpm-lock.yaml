@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -26,12 +26,21 @@ importers:
       '@auth0/nextjs-auth0':
         specifier: ^3.5.0
         version: 3.5.0(next@14.0.4)
+      '@colinzhao/prisma':
+        specifier: workspace:*
+        version: link:../../packages/prisma
+      '@colinzhao/services':
+        specifier: workspace:*
+        version: link:../../packages/services
       '@colinzhao/trpc':
         specifier: workspace:*
         version: link:../../packages/trpc
       '@colinzhao/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@colinzhao/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       '@tanstack/react-query':
         specifier: '4'
         version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
@@ -71,6 +80,9 @@ importers:
       superjson:
         specifier: ^2.2.1
         version: 2.2.1
+      ulid:
+        specifier: ^2.3.0
+        version: 2.3.0
     devDependencies:
       '@prisma/nextjs-monorepo-workaround-plugin':
         specifier: ^5.8.1
@@ -119,6 +131,10 @@ importers:
         version: 1.11.3(eslint@8.56.0)
 
   packages/prisma:
+    dependencies:
+      '@prisma/client':
+        specifier: 5.8.1
+        version: 5.8.1(prisma@5.8.1)
     devDependencies:
       '@types/node':
         specifier: ^20
@@ -138,19 +154,34 @@ importers:
       '@colinzhao/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@colinzhao/prisma':
+        specifier: workspace:*
+        version: link:../prisma
       '@colinzhao/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@colinzhao/utils':
+        specifier: workspace:*
+        version: link:../utils
       inversify:
         specifier: ^6.0.2
         version: 6.0.2
+      luxon:
+        specifier: ^3.4.4
+        version: 3.4.4
       openai:
         specifier: ^4.24.7
         version: 4.24.7
       reflect-metadata:
         specifier: ^0.2.1
         version: 0.2.1
+      ulid:
+        specifier: ^2.3.0
+        version: 2.3.0
     devDependencies:
+      '@types/luxon':
+        specifier: ^3.4.2
+        version: 3.4.2
       '@types/node':
         specifier: ^20
         version: 20.11.4
@@ -205,6 +236,19 @@ importers:
         version: 5.3.3
 
   packages/tsconfig: {}
+
+  packages/utils:
+    dependencies:
+      '@colinzhao/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+    devDependencies:
+      '@types/node':
+        specifier: ^20
+        version: 20.11.4
+      typescript:
+        specifier: ^5
+        version: 5.3.3
 
 packages:
 
@@ -924,13 +968,24 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
+  /@prisma/client@5.8.1(prisma@5.8.1):
+    resolution: {integrity: sha512-xQtMPfbIwLlbm0VVIVQY2yqQVOxPwRQhvIp7Z3m2900g1bu/zRHKhYZJQWELqmjl6d8YwBy0K2NvMqh47v1ubw==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      prisma: 5.8.1
+    dev: false
+
   /@prisma/debug@5.8.1:
     resolution: {integrity: sha512-tjuw7eA0Us3T42jx9AmAgL58rzwzpFGYc3R7Y4Ip75EBYrKMBA1YihuWMcBC92ILmjlQ/u3p8VxcIE0hr+fZfg==}
-    dev: true
 
   /@prisma/engines-version@5.8.1-1.78caf6feeaed953168c64e15a249c3e9a033ebe2:
     resolution: {integrity: sha512-f5C3JM3l9yhGr3cr4FMqWloFaSCpNpMi58Om22rjD2DOz3owci2mFdFXMgnAGazFPKrCbbEhcxdsRfspEYRoFQ==}
-    dev: true
 
   /@prisma/engines@5.8.1:
     resolution: {integrity: sha512-TJgYLRrZr56uhqcXO4GmP5be+zjCIHtLDK20Cnfg+o9d905hsN065QOL+3Z0zQAy6YD31Ol4u2kzSfRmbJv/uA==}
@@ -940,7 +995,6 @@ packages:
       '@prisma/engines-version': 5.8.1-1.78caf6feeaed953168c64e15a249c3e9a033ebe2
       '@prisma/fetch-engine': 5.8.1
       '@prisma/get-platform': 5.8.1
-    dev: true
 
   /@prisma/fetch-engine@5.8.1:
     resolution: {integrity: sha512-+bgjjoSFa6uYEbAPlklfoVSStOEfcpheOjoBoNsNNSQdSzcwE2nM4Q0prun0+P8/0sCHo18JZ9xqa8gObvgOUw==}
@@ -948,13 +1002,11 @@ packages:
       '@prisma/debug': 5.8.1
       '@prisma/engines-version': 5.8.1-1.78caf6feeaed953168c64e15a249c3e9a033ebe2
       '@prisma/get-platform': 5.8.1
-    dev: true
 
   /@prisma/get-platform@5.8.1:
     resolution: {integrity: sha512-wnA+6HTFcY+tkykMokix9GiAkaauPC5W/gg0O5JB0J8tCTNWrqpnQ7AsaGRfkYUbeOIioh6woDjQrGTTRf1Zag==}
     dependencies:
       '@prisma/debug': 5.8.1
-    dev: true
 
   /@prisma/nextjs-monorepo-workaround-plugin@5.8.1:
     resolution: {integrity: sha512-0DhnWwI5I75ZGPpFq+q1i2tU080xR7GW1pzK2jh958Yeb7I8iR6hWsEN32nCIalh8m+IbKoc4W++qbWmWWNv2w==}
@@ -1076,6 +1128,10 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: true
+
+  /@types/luxon@3.4.2:
+    resolution: {integrity: sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==}
     dev: true
 
   /@types/node-fetch@2.6.11:
@@ -2158,7 +2214,7 @@ packages:
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.56.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.56.0)
       eslint-plugin-react: 7.33.2(eslint@8.56.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.56.0)
@@ -2216,7 +2272,7 @@ packages:
       enhanced-resolve: 5.15.0
       eslint: 8.56.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.19.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.2
       is-core-module: 2.13.1
@@ -2297,41 +2353,6 @@ packages:
       escape-string-regexp: 1.0.5
       eslint: 8.56.0
       ignore: 5.3.0
-    dev: true
-
-  /eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0):
-    resolution: {integrity: sha512-BbPC0cuExzhiMo4Ff1BTVwHpjjv28C5R+btTOGaCRC7UEz801up0JadwkeSk5Ued6TG34uaczuVuH6qyy5YUxw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 6.19.0(eslint@8.56.0)(typescript@5.3.3)
-      array-includes: 3.1.7
-      array.prototype.findlastindex: 1.2.3
-      array.prototype.flat: 1.3.2
-      array.prototype.flatmap: 1.3.2
-      debug: 3.2.7
-      doctrine: 2.1.0
-      eslint: 8.56.0
-      eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
-      hasown: 2.0.0
-      is-core-module: 2.13.1
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.7
-      object.groupby: 1.0.1
-      object.values: 1.1.7
-      semver: 6.3.1
-      tsconfig-paths: 3.15.0
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
     dev: true
 
   /eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.19.1)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0):
@@ -3422,6 +3443,11 @@ packages:
     dependencies:
       yallist: 4.0.0
 
+  /luxon@3.4.4:
+    resolution: {integrity: sha512-zobTr7akeGHnv7eBOXcRgMeCP6+uyYsczwmeRCauvpvaAltgNyTbLH/+VaEAPUeWBT+1GuNmz4wC/6jtQzbbVA==}
+    engines: {node: '>=12'}
+    dev: false
+
   /make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
     dev: true
@@ -3987,7 +4013,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 5.8.1
-    dev: true
 
   /prop-types@15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
@@ -4754,6 +4779,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
+
+  /ulid@2.3.0:
+    resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
+    hasBin: true
+    dev: false
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}

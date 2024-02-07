@@ -4,6 +4,8 @@ import './globals.css';
 
 import Provider from '@colinzhao/trpc/client/Provider';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { getSession } from '@auth0/nextjs-auth0';
+import { redirect } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +19,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+
+  if (!session) {
+    redirect('/api/auth/login');
+  }
+
   return (
     <html lang="en">
       <body className={inter.className}>

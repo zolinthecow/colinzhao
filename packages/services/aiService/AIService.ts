@@ -1,6 +1,8 @@
 import OpenAI from 'openai';
 import IAIService from './AIService.interface';
+import { injectable } from 'inversify';
 
+@injectable()
 export default class AIService implements IAIService {
   private _openAIClient: OpenAI;
 
@@ -10,7 +12,7 @@ export default class AIService implements IAIService {
     });
   }
 
-  getOpenAIClient(): OpenAI {
+  public getOpenAIClient(): OpenAI {
     return this._openAIClient;
   }
 }

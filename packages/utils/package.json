@@ -1,0 +1,10 @@
+{
+  "name": "@colinzhao/utils",
+  "dependencies": {
+    "@colinzhao/tsconfig": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}

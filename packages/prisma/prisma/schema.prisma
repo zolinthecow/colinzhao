@@ -2,11 +2,67 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../node_modules/.prisma/client"
+  provider      = "prisma-client-js"
+  output        = "../node_modules/.prisma/client"
+  binaryTargets = ["native", "linux-arm64-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id
+  nickname String
+  picture  String
+  usage    Usage[]
+  chats    Chat[]
+}
+
+model Usage {
+  id                   String   @id
+  userId               String
+  createdAt            DateTime @db.Time()
+  gptFourCalls         Int
+  gptThreeDotFiveCalls Int
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], name: "usage_user_id_idx")
+  @@index([createdAt], name: "usage_created_at_idx")
+}
+
+model Chat {
+  id        String        @id
+  userId    String
+  title     String
+  createdAt DateTime      @db.Time()
+  messages  ChatMessage[]
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], name: "chat_user_id_idx")
+}
+
+enum ChatMessageType {
+  AI
+  USER
+}
+
+enum ChatMessageStatus {
+  SENT
+  INTERRUPTED
+  ERRORED
+  GENERATING
+}
+
+model ChatMessage {
+  id            Int               @id @default(autoincrement())
+  chatId        String
+  message       String
+  messageType   ChatMessageType
+  messageStatus ChatMessageStatus
+
+  chat Chat @relation(fields: [chatId], references: [id], onDelete: Cascade)
+
+  @@index([chatId], name: "chat_message_chat_id_idx")
 }

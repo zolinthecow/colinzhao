@@ -12,12 +12,17 @@
   "license": "ISC",
   "dependencies": {
     "@colinzhao/eslint-config": "workspace:*",
+    "@colinzhao/prisma": "workspace:*",
     "@colinzhao/tsconfig": "workspace:*",
+    "@colinzhao/utils": "workspace:*",
     "inversify": "^6.0.2",
+    "luxon": "^3.4.4",
     "openai": "^4.24.7",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
+    "@types/luxon": "^3.4.2",
     "@types/node": "^20",
     "eslint": "^8",
     "typescript": "^5"
