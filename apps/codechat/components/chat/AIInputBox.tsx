@@ -23,7 +23,7 @@ const AIInputBox: React.FC<Props> = ({ handleSubmit }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
-    <form className="fixed bottom-6 w-full max-w-5xl flex flex-row">
+    <form className="fixed bottom-6 w-full max-w-4xl flex flex-row">
       <textarea
         ref={textAreaRef}
         value={value}

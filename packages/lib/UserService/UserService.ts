@@ -3,10 +3,8 @@ import IUserService from './UserService.interface';
 import prisma, { Usage } from '@colinzhao/prisma';
 import { DateTime } from 'luxon';
 import { ulid } from 'ulid';
-import { injectable } from 'inversify';
 
-@injectable()
-export default class UserService implements IUserService {
+class _UserService implements IUserService {
   constructor() {}
 
   public getGptLimits(): { gptFour: number; gptThreeDotFive: number } {
@@ -109,3 +107,7 @@ export default class UserService implements IUserService {
     });
   }
 }
+
+const UserService = new _UserService();
+
+export default UserService;

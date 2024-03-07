@@ -11,7 +11,7 @@
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
     "@colinzhao/prisma": "workspace:*",
-    "@colinzhao/services": "workspace:*",
+    "@colinzhao/lib": "workspace:*",
     "@colinzhao/trpc": "workspace:*",
     "@colinzhao/tsconfig": "workspace:*",
     "@colinzhao/utils": "workspace:*",
@@ -22,6 +22,7 @@
     "@trpc/server": "^10.45.0",
     "axios": "^1.6.5",
     "inversify": "^6.0.2",
+    "luxon": "^3.4.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@prisma/nextjs-monorepo-workaround-plugin": "^5.8.1",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

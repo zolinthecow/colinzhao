@@ -2,8 +2,9 @@
 
 import { getSession } from '@auth0/nextjs-auth0';
 
-import serviceCollection from '@colinzhao/services';
 import { ChatMessageType } from '@colinzhao/prisma';
+
+import ChatService from '~/services/ChatService';
 
 type InitialMessage = {
   message: string;
@@ -16,9 +17,6 @@ export default async function createChat(initialMessages: InitialMessage[]) {
     console.error('UNAUTHENTICATED');
     return;
   }
-  const chat = await serviceCollection.chatService.createChat(
-    session.user.sub,
-    initialMessages,
-  );
+  const chat = await ChatService.createChat(session.user.sub, initialMessages);
   return chat.id;
 }

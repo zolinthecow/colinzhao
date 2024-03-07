@@ -27,9 +27,4 @@ export default interface IChatService {
     message: string,
     chatId?: string,
   ): AsyncGenerator<ChatMessage>;
-  // createChatMessage(
-  //   userId: string,
-  //   message: string,
-  //   chatId?: string,
-  // ): Promise<ReturnType<typeof streamResponse>>;
 }

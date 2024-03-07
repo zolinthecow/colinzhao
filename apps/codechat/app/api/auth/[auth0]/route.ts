@@ -3,14 +3,15 @@ import {
   handleAuth,
   handleCallback,
 } from '@auth0/nextjs-auth0';
-import serviceCollection from '@colinzhao/services';
+
+import UserService from '@colinzhao/lib/UserService';
 
 const afterCallback: AfterCallbackAppRoute = async (req, session, state) => {
   const { user } = session;
 
   if (user) {
     console.log(user);
-    await serviceCollection.userService.createUserIfNotExisting({
+    await UserService.createUserIfNotExisting({
       id: user.sub,
       nickname: user.nickname,
       picture: user.picture,

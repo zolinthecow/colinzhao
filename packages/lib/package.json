@@ -1,5 +1,5 @@
 {
-  "name": "@colinzhao/services",
+  "name": "@colinzhao/lib",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -15,10 +15,8 @@
     "@colinzhao/prisma": "workspace:*",
     "@colinzhao/tsconfig": "workspace:*",
     "@colinzhao/utils": "workspace:*",
-    "inversify": "^6.0.2",
     "luxon": "^3.4.4",
     "openai": "^4.24.7",
-    "reflect-metadata": "^0.2.1",
     "ulid": "^2.3.0"
   },
   "devDependencies": {

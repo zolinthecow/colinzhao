@@ -8,11 +8,11 @@ import {
   ChatMessageType,
   ChatMessageStatus,
 } from '@colinzhao/prisma';
-import { streamAiResponse } from '~/app/actions/streamAiResponse';
+import { streamAiResponse } from '~/actions/streamAiResponse';
 import { iterateStreamResponse } from '@colinzhao/utils';
 import MessagesArea from '~/components/chat/MessagesArea';
 import AIInputBox from '~/components/chat/AIInputBox';
-import createChat from '~/app/actions/createChat';
+import createChat from '~/actions/createChat';
 
 type Props = {
   initialMessages: ChatMessage[];
@@ -68,7 +68,7 @@ const ChatArea: React.FC<Props> = ({
   };
 
   return (
-    <div className="w-full max-w-5xl flex min-h-screen flex-col">
+    <div className="w-full max-w-4xl flex min-h-screen flex-col bg-red">
       <MessagesArea messages={messages} />
       <AIInputBox handleSubmit={handleSubmit} />
     </div>

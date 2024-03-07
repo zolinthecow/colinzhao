@@ -8,24 +8,12 @@ import prisma, {
 } from '@colinzhao/prisma';
 import { ulid } from 'ulid';
 
-import { inject, injectable } from 'inversify';
-import type IAIService from '../aiService/AIService.interface';
-import type IUserService from '../userService/UserService.interface';
-import { TYPES } from '../serviceTypes';
+import AIService from '@colinzhao/lib/AIService';
+import UserService from '@colinzhao/lib/UserService';
 import { DateTime } from 'luxon';
 
-@injectable()
-export default class ChatService implements IChatService {
-  private _aiService: IAIService;
-  private _userService: IUserService;
-
-  public constructor(
-    @inject(TYPES.AIService) aiService: IAIService,
-    @inject(TYPES.UserService) userService: IUserService,
-  ) {
-    this._aiService = aiService;
-    this._userService = userService;
-
+class _ChatService implements IChatService {
+  public constructor() {
     this.createChatMessage = this.createChatMessage.bind(this);
   }
 
@@ -135,8 +123,8 @@ export default class ChatService implements IChatService {
     message: string,
     chatId?: string,
   ): AsyncGenerator<ChatMessage> {
-    const usage = await this._userService.getUsage(userId);
-    const limits = this._userService.getGptLimits();
+    const usage = await UserService.getUsage(userId);
+    const limits = UserService.getGptLimits();
 
     let model;
 
@@ -172,7 +160,7 @@ export default class ChatService implements IChatService {
     }
     yield userMessage;
 
-    const openaiClient = this._aiService.getOpenAIClient();
+    const openaiClient = AIService.getOpenAIClient();
 
     const resp = await openaiClient.chat.completions.create({
       model,
@@ -185,7 +173,7 @@ export default class ChatService implements IChatService {
       ],
     });
 
-    await this._userService.incrementUsage(
+    await UserService.incrementUsage(
       userId,
       model === 'gpt-4' ? 'gpt4' : 'gpt3.5',
     );
@@ -234,3 +222,7 @@ export default class ChatService implements IChatService {
     }
   }
 }
+
+const ChatService = new _ChatService();
+
+export default ChatService;
