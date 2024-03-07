@@ -15,6 +15,7 @@ async function streamChunk<T>(generator: AsyncGenerator<T>) {
 }
 
 // Use in server action to create a stream response
+// eslint-disable-next-line
 export function streamResponse<T, P extends any[]>(
   createGenerator: (
     ...args: P

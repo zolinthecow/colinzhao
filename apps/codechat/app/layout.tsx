@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
-import Provider from '@colinzhao/trpc/client/Provider';
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { getSession } from '@auth0/nextjs-auth0';
 import { redirect } from 'next/navigation';
@@ -28,9 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
-          <Provider>{children}</Provider>
-        </UserProvider>
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );

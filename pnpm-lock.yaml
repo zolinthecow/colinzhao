@@ -32,15 +32,9 @@ importers:
       '@colinzhao/prisma':
         specifier: workspace:*
         version: link:../../packages/prisma
-      '@colinzhao/trpc':
-        specifier: workspace:*
-        version: link:../../packages/trpc
       '@colinzhao/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@colinzhao/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       '@tanstack/react-query':
         specifier: '4'
         version: 4.36.1(react-dom@18.2.0)(react@18.2.0)
@@ -59,9 +53,6 @@ importers:
       axios:
         specifier: ^1.6.5
         version: 1.6.5
-      inversify:
-        specifier: ^6.0.2
-        version: 6.0.2
       luxon:
         specifier: ^3.4.4
         version: 3.4.4
@@ -74,9 +65,6 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
-      reflect-metadata:
-        specifier: ^0.2.1
-        version: 0.2.1
       sharp:
         specifier: 0.33.1
         version: 0.33.1
@@ -2397,7 +2385,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.19.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.19.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
       hasown: 2.0.0
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -3101,10 +3089,6 @@ packages:
       hasown: 2.0.0
       side-channel: 1.0.4
     dev: true
-
-  /inversify@6.0.2:
-    resolution: {integrity: sha512-i9m8j/7YIv4mDuYXUAcrpKPSaju/CIly9AHK5jvCBeoiM/2KEsuCQTTP+rzSWWpLYWRukdXFSl6ZTk2/uumbiA==}
-    dev: false
 
   /is-array-buffer@3.0.2:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==}

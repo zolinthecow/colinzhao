@@ -1,6 +1,0 @@
-{
-  "extends": "@colinzhao/tsconfig/tsconfig.base.json",
-  "compilerOptions": {
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */
-  }
-}

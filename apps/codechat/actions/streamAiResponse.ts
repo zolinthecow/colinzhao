@@ -2,7 +2,7 @@
 
 import { getSession } from '@auth0/nextjs-auth0';
 
-import { streamResponse } from '@colinzhao/utils';
+import { streamResponse } from '@colinzhao/lib/NextStreamingHelpers';
 
 import ChatService from '~/services/ChatService';
 
